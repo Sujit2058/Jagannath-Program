@@ -1,0 +1,96 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:jagannath/bhajan/mangal_arati.dart';
+
+class NavBar extends StatelessWidget {
+  const NavBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const UserAccountsDrawerHeader(
+            accountName: Text('Sujit Prajapati'),
+            accountEmail: Text('sujitpra058@gmail.com'),
+            currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+              child: Image(
+                image: AssetImage(
+                  'image/patridas.jpg',
+                ),
+                width: 90,
+                height: 90,
+                fit: BoxFit.cover,
+              ),
+            )),
+            decoration: BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                    image: AssetImage(
+                      'image/cover.jpg',
+                    ),
+                    fit: BoxFit.cover)),
+          ),
+          ListTile(
+            leading: const Icon(Icons.favorite),
+            title: const Text("Favourites"),
+            onTap: () => const GButton(icon: Icons.access_time_filled_rounded),
+          ),
+          ListTile(
+            leading: const Icon(Icons.people),
+            title: const Text("Friends"),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.share),
+            title: const Text("Share"),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.notifications),
+            title: const Text("Requests"),
+            trailing: ClipOval(
+              child: Container(
+                color: Colors.red,
+                width: 20,
+                height: 20,
+                child: const Center(
+                  child: Text(
+                    "0",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text("Setings"),
+              onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Mangal_arati()),
+                  )),
+          ListTile(
+            leading: const Icon(Icons.description),
+            title: const Text("Policies"),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text("Exit"),
+            onTap: () => exit(exitCode),
+          ),
+        ],
+      ),
+    );
+  }
+}
